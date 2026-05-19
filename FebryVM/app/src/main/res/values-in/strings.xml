@@ -304,11 +304,4 @@
         <item>WebDAV</item>
     </string-array>
 
-    <string-array name="theme_color_entries">
-        <item>Orange (Default)</item>
-        <item>Biru</item>
-        <item>Hijau</item>
-        <item>Ungu</item>
-        <item>Merah</item>
-    </string-array>
 </resources>

@@ -476,13 +476,6 @@
     <!-- Theme Selector -->
     <string name="title_theme_selector">Theme Color</string>
     <string name="summary_theme_selector">Choose app accent color</string>
-    <string-array name="theme_color_entries">
-        <item>Orange (Default)</item>
-        <item>Blue</item>
-        <item>Green</item>
-        <item>Purple</item>
-        <item>Red</item>
-    </string-array>
 
     <!-- Kill Switch -->
     <string name="title_kill_switch">Kill Switch</string>

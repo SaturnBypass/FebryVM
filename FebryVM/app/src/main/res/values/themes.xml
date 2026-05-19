@@ -82,7 +82,6 @@
     <style name="AppTheme.Orange" parent="AppThemeDayNight.NoActionBar">
         <item name="colorSecondary">#f97910</item>
         <item name="colorPrimary">#000000</item>
-        <item name="color_fab_active">#f97910</item>
     </style>
 
     <style name="AppTheme.Blue" parent="AppThemeDayNight.NoActionBar">

@@ -499,6 +499,7 @@
     <string name="summary_dns_over_https">Use DNS over HTTPS to prevent DNS leaks</string>
 
     <!-- Config Validator -->
+    <string name="title_config_validator">Config Validator</string>
     <string name="toast_config_valid">Configuration is valid</string>
     <string name="toast_config_invalid">Invalid configuration: %s</string>
 

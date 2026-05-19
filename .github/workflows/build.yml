@@ -83,6 +83,17 @@ jobs:
         distribution: 'temurin'
         java-version: '21'
 
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v4
+
+    - name: Validate Gradle Wrapper
+      run: |
+        cd ${{ github.workspace }}/FebryVM
+        if [ ! -f gradle/wrapper/gradle-wrapper.jar ]; then
+          wget -q https://raw.githubusercontent.com/gradle/gradle/v9.4.1/gradle/wrapper/gradle-wrapper.jar \
+            -O gradle/wrapper/gradle-wrapper.jar
+        fi
+
     - name: Decode Keystore
       uses: timheuer/base64-to-file@v2.0.0
       id: android_keystore

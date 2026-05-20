@@ -296,6 +296,4 @@ object AppConfig {
         TAG_BLOCKED,
     )
 }
-}
 
-}

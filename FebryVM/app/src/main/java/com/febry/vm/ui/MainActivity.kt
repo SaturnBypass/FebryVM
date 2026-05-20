@@ -106,6 +106,12 @@ class MainActivity : HelperBaseActivity(), NavigationView.OnNavigationItemSelect
         if (!MmkvManager.decodeBool(AppConfig.PREF_MUX_ENABLED, false)) {
             MmkvManager.encode(AppConfig.PREF_MUX_ENABLED, true)
         }
+        setupViewModel()
+        SubscriptionUpdater.sync()
+        mainViewModel.reloadServerList()
+
+        checkAndRequestPermission(PermissionType.POST_NOTIFICATIONS) {
+        }
     }
 
     private fun updateUsageDashboard() {
@@ -122,13 +128,6 @@ class MainActivity : HelperBaseActivity(), NavigationView.OnNavigationItemSelect
                 binding.tvDashboardUpload.text = com.febry.vm.extension.toSpeedString(totalUp)
                 binding.tvDashboardDownload.text = com.febry.vm.extension.toSpeedString(totalDown)
             }
-        }
-    }
-        setupViewModel()
-        SubscriptionUpdater.sync()
-        mainViewModel.reloadServerList()
-
-        checkAndRequestPermission(PermissionType.POST_NOTIFICATIONS) {
         }
     }
 

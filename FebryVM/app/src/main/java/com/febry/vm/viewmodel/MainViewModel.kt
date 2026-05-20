@@ -294,7 +294,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             }
 
             var bestGuid: String? = null
-            var minPing = Int.MAX_VALUE
+            var minPing = Long.MAX_VALUE
 
             val jobs = servers.map { item ->
                 launch {
@@ -303,7 +303,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                     val serverPort = outbound.serverPort
                     if (serverAddress != null && serverPort != null) {
                         val ping = SpeedtestManager.tcping(serverAddress, serverPort.toInt())
-                        if (ping > 0 && ping < minPing) {
+                        if (ping > 0L && ping < minPing) {
                             minPing = ping
                             bestGuid = item.guid
                         }

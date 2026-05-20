@@ -104,8 +104,8 @@ class MainActivity : HelperBaseActivity(), NavigationView.OnNavigationItemSelect
         setupGroupTab()
         updateUsageDashboard()
         // Enable Mux by default for efficiency
-        if (!MmkvManager.decodeBool(AppConfig.PREF_MUX_ENABLED, false)) {
-            MmkvManager.encode(AppConfig.PREF_MUX_ENABLED, true)
+        if (!MmkvManager.decodeSettingsBool(AppConfig.PREF_MUX_ENABLED, false)) {
+            MmkvManager.encodeSettings(AppConfig.PREF_MUX_ENABLED, true)
         }
         setupViewModel()
         SubscriptionUpdater.sync()
@@ -126,8 +126,8 @@ class MainActivity : HelperBaseActivity(), NavigationView.OnNavigationItemSelect
             }
 
             withContext(Dispatchers.Main) {
-                binding.tvDashboardUpload.text = com.febry.vm.extension.toSpeedString(totalUp)
-                binding.tvDashboardDownload.text = com.febry.vm.extension.toSpeedString(totalDown)
+                binding.tvDashboardUpload.text = totalUp.toTrafficString()
+                binding.tvDashboardDownload.text = totalDown.toTrafficString()
             }
         }
     }

@@ -15,13 +15,138 @@
             android:id="@+id/app_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?attr/colorSurface"
             app:elevation="0dp">
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbar"
+            <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:titleTextAppearance="?attr/textAppearanceTitleLarge" />
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="?attr/actionBarSize">
+
+                    <!-- Data Usage Dashboard -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_usage_dashboard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        app:cardCornerRadius="24dp"
+                        app:cardElevation="0dp"
+                        app:strokeWidth="1dp"
+                        app:strokeColor="@color/md_theme_outlineVariant">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="20dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Data Usage"
+                                    android:textAppearance="?attr/textAppearanceTitleMedium"
+                                    android:textStyle="bold" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btn_view_all_usage"
+                                    style="@style/Widget.Material3.Button.TextButton"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:text="View All"
+                                    android:textSize="12sp"
+                                    app:icon="@drawable/ic_arrow_drop_down"
+                                    app:iconGravity="end" />
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:layout_marginTop="12dp"
+                                android:background="@drawable/nav_header_gradient"
+                                android:alpha="0.1"
+                                android:gravity="center"
+                                android:visibility="gone"/> <!-- Visual element placeholder -->
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Upload"
+                                        android:textAppearance="?attr/textAppearanceLabelSmall"
+                                        android:textColor="?attr/colorOnSurfaceVariant" />
+                                    <TextView
+                                        android:id="@+id/tv_dashboard_upload"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="0.00 B"
+                                        android:textAppearance="?attr/textAppearanceTitleLarge"
+                                        android:textColor="@color/md_theme_primary"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginHorizontal="16dp"
+                                    android:background="@color/md_theme_outlineVariant" />
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Download"
+                                        android:textAppearance="?attr/textAppearanceLabelSmall"
+                                        android:textColor="?attr/colorOnSurfaceVariant" />
+                                    <TextView
+                                        android:id="@+id/tv_dashboard_download"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="0.00 B"
+                                        android:textAppearance="?attr/textAppearanceTitleLarge"
+                                        android:textColor="@color/md_theme_tertiary"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin"
+                    app:titleTextAppearance="?attr/textAppearanceTitleLarge" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/progress_bar"
@@ -31,149 +156,22 @@
                 android:visibility="invisible"
                 app:indicatorColor="?attr/colorPrimary" />
 
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-            <LinearLayout
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingBottom="100dp">
+                app:tabIndicatorFullWidth="false"
+                app:tabMode="scrollable"
+                app:tabSelectedTextColor="?attr/colorPrimary"
+                app:tabTextColor="?attr/colorOnSurfaceVariant" />
 
-                <!-- Data Usage Dashboard -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_usage_dashboard"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="0dp"
-                    app:strokeWidth="1dp"
-                    app:strokeColor="@color/md_theme_outlineVariant">
+        </com.google.android.material.appbar.AppBarLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="20dp">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Data Usage"
-                                android:textAppearance="?attr/textAppearanceTitleMedium"
-                                android:textStyle="bold" />
-
-                            <com.google.android.material.button.MaterialButton
-                                android:id="@+id/btn_view_all_usage"
-                                style="@style/Widget.Material3.Button.TextButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:text="View All"
-                                android:textSize="12sp"
-                                app:icon="@drawable/ic_arrow_drop_down"
-                                app:iconGravity="end" />
-                        </RelativeLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="120dp"
-                            android:layout_marginTop="12dp"
-                            android:background="@drawable/ic_circle"
-                            android:backgroundTint="@color/md_theme_surfaceVariant"
-                            android:gravity="center">
-                            <!-- Placeholder for Chart -->
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Usage Statistics Chart"
-                                android:textAppearance="?attr/textAppearanceLabelMedium"
-                                android:textColor="?attr/colorOnSurfaceVariant" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Upload"
-                                    android:textAppearance="?attr/textAppearanceLabelSmall"
-                                    android:textColor="?attr/colorOnSurfaceVariant" />
-                                <TextView
-                                    android:id="@+id/tv_dashboard_upload"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="0.00 B"
-                                    android:textAppearance="?attr/textAppearanceTitleLarge"
-                                    android:textColor="@color/md_theme_primary"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-
-                            <View
-                                android:layout_width="1dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginHorizontal="16dp"
-                                android:background="@color/md_theme_outlineVariant" />
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Download"
-                                    android:textAppearance="?attr/textAppearanceLabelSmall"
-                                    android:textColor="?attr/colorOnSurfaceVariant" />
-                                <TextView
-                                    android:id="@+id/tv_dashboard_download"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="0.00 B"
-                                    android:textAppearance="?attr/textAppearanceTitleLarge"
-                                    android:textColor="@color/md_theme_tertiary"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tab_group"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:tabIndicatorFullWidth="false"
-                    app:tabMode="scrollable"
-                    app:tabSelectedTextColor="?attr/colorPrimary"
-                    app:tabTextColor="?attr/colorOnSurfaceVariant" />
-
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/view_pager"
-                    android:layout_width="match_parent"
-                    android:layout_height="500dp" /> <!-- Initial height, will be dynamic or adjusted in code if needed -->
-
-            </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
         <!-- Connection Test Area at the bottom -->
         <com.google.android.material.card.MaterialCardView
@@ -181,7 +179,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_margin="12dp"
+            android:layout_margin="16dp"
             android:clickable="true"
             android:focusable="true"
             app:cardCornerRadius="16dp"
@@ -205,7 +203,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="88dp"
             android:clickable="true"
             android:focusable="true"
             android:src="@drawable/ic_play_24dp"

@@ -738,7 +738,7 @@ object MmkvManager {
     fun decodeTrafficDownload(guid: String): Long = mainStorage.decodeLong(trafficDownKey(guid), 0L)
 
     fun clearTrafficStats() {
-        decodeServerList().forEach { guid ->
+        decodeAllServerList().forEach { guid ->
             mainStorage.remove(trafficUpKey(guid))
             mainStorage.remove(trafficDownKey(guid))
         }

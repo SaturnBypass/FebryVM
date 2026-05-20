@@ -47,7 +47,7 @@ class TrafficStatsActivity : BaseActivity() {
     }
 
     private fun loadStats(): List<ServerStat> {
-        val allServers = MmkvManager.decodeServerList()
+        val allServers = MmkvManager.decodeAllServerList()
         return allServers.mapNotNull { guid ->
             val config = MmkvManager.decodeServerConfig(guid) ?: return@mapNotNull null
             val up = MmkvManager.decodeTrafficUpload(guid)

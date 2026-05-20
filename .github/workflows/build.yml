@@ -59,7 +59,7 @@ jobs:
 
     - name: Copy libhevtun
       run: |
-        cp -r ${{ github.workspace }}/libs ${{ github.workspace }}/FebryVM/app
+        cp -r ${{ github.workspace }}/libs/* ${{ github.workspace }}/FebryVM/app/src/main/jniLibs/
 
     - name: Fetch AndroidLibXrayLite tag
       run: |

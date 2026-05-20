@@ -4,6 +4,11 @@
 
     <PreferenceCategory android:title="@string/title_ui_settings">
         <CheckBoxPreference
+            android:key="pref_app_lock_enabled"
+            android:title="App Lock (Biometric)"
+            android:summary="Require biometric authentication to open the app" />
+
+        <CheckBoxPreference
             android:key="pref_speed_enabled"
             android:summary="@string/summary_pref_speed_enabled"
             android:title="@string/title_pref_speed_enabled" />

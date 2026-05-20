@@ -71,6 +71,21 @@ class LogcatActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.filter_all -> {
+            viewModel.filterLevel("")
+            refreshData()
+            true
+        }
+        R.id.filter_info -> {
+            viewModel.filterLevel("I")
+            refreshData()
+            true
+        }
+        R.id.filter_error -> {
+            viewModel.filterLevel("E")
+            refreshData()
+            true
+        }
         R.id.copy_all -> {
             val all = viewModel.getAll().joinToString("\n")
             Utils.setClipboard(this, all)

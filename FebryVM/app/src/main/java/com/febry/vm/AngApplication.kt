@@ -31,6 +31,7 @@ class AngApplication : MultiDexApplication() {
      */
     override fun onCreate() {
         super.onCreate()
+        DynamicColors.applyToActivitiesIfAvailable(this)
 
         MMKV.initialize(this)
 
@@ -41,7 +42,10 @@ class AngApplication : MultiDexApplication() {
         SettingsManager.initApp(this)
         SettingsManager.setNightMode()
 
+        val font = androidx.core.content.res.ResourcesCompat.getFont(this, R.font.inter_font)
         es.dmoral.toasty.Toasty.Config.getInstance()
+            .setToastTypeface(font!!)
+            .setTextSize(14)
             .setGravity(android.view.Gravity.BOTTOM, 0, 300)
             .apply()
     }

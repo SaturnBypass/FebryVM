@@ -35,13 +35,25 @@ import com.febry.vm.util.Utils
  * - Provide a helper to add a custom divider to RecyclerViews.
  * - Wrap base context according to user locale settings.
  */
+import androidx.biometric.BiometricPrompt
+import androidx.core.content.res.ResourcesCompat
+import java.util.concurrent.Executor
+
 abstract class BaseActivity : AppCompatActivity() {
+    companion object {
+        private var isAuthorized = false
+    }
+
     // Progress indicator that sits at the bottom of the toolbar
     private var progressBar: LinearProgressIndicator? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         applyThemeColor()
         super.onCreate(savedInstanceState)
+        
+        if (MmkvManager.decodeBool(AppConfig.PREF_APP_LOCK_ENABLED) && !isAuthorized) {
+            showBiometricPrompt()
+        }
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         if (!Utils.getDarkModeStatus(this)) {
@@ -49,6 +61,32 @@ abstract class BaseActivity : AppCompatActivity() {
                 isAppearanceLightStatusBars = true
             }
         }
+    }
+
+    private fun showBiometricPrompt() {
+        val executor = ContextCompat.getMainExecutor(this)
+        val biometricPrompt = BiometricPrompt(this, executor,
+            object : BiometricPrompt.AuthenticationCallback() {
+                override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                    super.onAuthenticationSucceeded(result)
+                    isAuthorized = true
+                }
+
+                override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                    super.onAuthenticationError(errorCode, errString)
+                    if (errorCode == BiometricPrompt.ERROR_USER_CANCELED || errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
+                        finishAffinity()
+                    }
+                }
+            })
+
+        val promptInfo = BiometricPrompt.PromptInfo.Builder()
+            .setTitle("App Lock")
+            .setSubtitle("Authenticate to open FebryVM")
+            .setNegativeButtonText("Exit")
+            .build()
+
+        biometricPrompt.authenticate(promptInfo)
     }
 
     /**

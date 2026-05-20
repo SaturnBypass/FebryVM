@@ -282,6 +282,43 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     /**
+     * Finds the server with the best ping in the current list.
+     * @param callback Callback with the best server GUID.
+     */
+    fun findBestServer(callback: (String?) -> Unit) {
+        viewModelScope.launch(Dispatchers.Default) {
+            val servers = serversCache.toList()
+            if (servers.isEmpty()) {
+                withContext(Dispatchers.Main) { callback(null) }
+                return@launch
+            }
+
+            var bestGuid: String? = null
+            var minPing = Int.MAX_VALUE
+
+            val jobs = servers.map { item ->
+                launch {
+                    val outbound = item.profile
+                    val serverAddress = outbound.server
+                    val serverPort = outbound.serverPort
+                    if (serverAddress != null && serverPort != null) {
+                        val ping = SpeedtestManager.tcping(serverAddress, serverPort.toInt())
+                        if (ping > 0 && ping < minPing) {
+                            minPing = ping
+                            bestGuid = item.guid
+                        }
+                    }
+                }
+            }
+            jobs.forEach { it.join() }
+
+            withContext(Dispatchers.Main) {
+                callback(bestGuid)
+            }
+        }
+    }
+
+    /**
      * Gets the position of a server by its GUID.
      * @param guid The GUID of the server.
      * @return The position of the server.

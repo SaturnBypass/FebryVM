@@ -10,6 +10,7 @@ class LogcatViewModel : ViewModel() {
     private val logsetsAll: MutableList<String> = mutableListOf()
     private var filteredLogs: List<String> = emptyList()
     private var currentFilter: String = ""
+    private var currentLevel: String = ""
 
     fun getAll(): List<String> = filteredLogs
 
@@ -53,11 +54,23 @@ class LogcatViewModel : ViewModel() {
         applyFilter()
     }
 
+    fun filterLevel(level: String) {
+        currentLevel = level
+        applyFilter()
+    }
+
     private fun applyFilter() {
+        var logs = logsetsAll.toList()
+        if (currentLevel.isNotEmpty()) {
+            logs = logs.filter { 
+                it.contains(" $currentLevel/", ignoreCase = true) || 
+                it.contains("[$currentLevel]", ignoreCase = true) 
+            }
+        }
         filteredLogs = if (currentFilter.isEmpty()) {
-            logsetsAll.toList()
+            logs
         } else {
-            logsetsAll.filter { it.contains(currentFilter) }
+            logs.filter { it.contains(currentFilter, ignoreCase = true) }
         }
     }
 }

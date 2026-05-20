@@ -507,4 +507,8 @@
     <string name="title_scheduled_sub_update">Scheduled Subscription Update</string>
     <string name="summary_scheduled_sub_update">Automatically update all subscriptions at set intervals</string>
 
+    <string name="title_pref_app_lock">App Lock (Biometric)</string>
+    <string name="summary_pref_app_lock">Require biometric authentication to open the app</string>
+    <string name="menu_auto_connect">Smart Auto-Connect</string>
+    <string name="msg_auto_connecting">Finding best server...</string>
 </resources>

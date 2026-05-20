@@ -96,8 +96,34 @@ class MainActivity : HelperBaseActivity(), NavigationView.OnNavigationItemSelect
 
         binding.fab.setOnClickListener { handleFabAction() }
         binding.layoutTest.setOnClickListener { handleLayoutTestClick() }
+        binding.btnViewAllUsage.setOnClickListener {
+            startActivity(Intent(this, TrafficStatsActivity::class.java))
+        }
 
         setupGroupTab()
+        updateUsageDashboard()
+        // Enable Mux by default for efficiency
+        if (!MmkvManager.decodeBool(AppConfig.PREF_MUX_ENABLED, false)) {
+            MmkvManager.encode(AppConfig.PREF_MUX_ENABLED, true)
+        }
+    }
+
+    private fun updateUsageDashboard() {
+        lifecycleScope.launch(Dispatchers.IO) {
+            val allServers = MmkvManager.decodeAllServerList()
+            var totalUp = 0L
+            var totalDown = 0L
+            allServers.forEach { guid ->
+                totalUp += MmkvManager.decodeTrafficUpload(guid)
+                totalDown += MmkvManager.decodeTrafficDownload(guid)
+            }
+
+            withContext(Dispatchers.Main) {
+                binding.tvDashboardUpload.text = com.febry.vm.extension.toSpeedString(totalUp)
+                binding.tvDashboardDownload.text = com.febry.vm.extension.toSpeedString(totalDown)
+            }
+        }
+    }
         setupViewModel()
         SubscriptionUpdater.sync()
         mainViewModel.reloadServerList()
@@ -204,6 +230,7 @@ class MainActivity : HelperBaseActivity(), NavigationView.OnNavigationItemSelect
 
     override fun onResume() {
         super.onResume()
+        updateUsageDashboard()
     }
 
     override fun onPause() {
@@ -316,8 +343,24 @@ class MainActivity : HelperBaseActivity(), NavigationView.OnNavigationItemSelect
             true
         }
 
-        R.id.service_restart -> {
-            restartV2Ray()
+        R.id.auto_connect -> {
+            toast(R.string.msg_auto_connecting)
+            mainViewModel.findBestServer { bestGuid ->
+                if (bestGuid != null) {
+                    MmkvManager.setSelectServer(bestGuid)
+                    mainViewModel.reloadServerList()
+                    restartV2Ray()
+                } else {
+                    toast(R.string.connection_test_error)
+                }
+            }
+            true
+        }
+        R.id.per_app_proxy -> {
+            startActivity(Intent(this, PerAppProxyActivity::class.java))
+            true
+        }
+        R.id.service_restart -> {            restartV2Ray()
             true
         }
 

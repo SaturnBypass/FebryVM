@@ -67,8 +67,16 @@
         </menu>
     </item>
     <item
+        android:id="@+id/auto_connect"
+        android:title="@string/menu_auto_connect"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/service_restart"
         android:title="@string/title_service_restart"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/per_app_proxy"
+        android:title="@string/title_pref_per_app_proxy"
         app:showAsAction="never" />
     <item
         android:id="@+id/del_all_config"

@@ -2,6 +2,8 @@
 
     <!-- Common base theme: put all shared items here so day/night can reuse -->
     <style name="AppThemeBase" parent="Theme.Material3.DayNight">
+        <item name="android:fontFamily">@font/inter_font</item>
+        <item name="fontFamily">@font/inter_font</item>
         <!-- Primary colors - main tone: black -->
         <item name="colorPrimary">@color/md_theme_primary</item>
         <item name="colorOnPrimary">@color/md_theme_onPrimary</item>

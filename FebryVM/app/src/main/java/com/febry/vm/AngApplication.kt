@@ -42,9 +42,8 @@ class AngApplication : MultiDexApplication() {
         SettingsManager.initApp(this)
         SettingsManager.setNightMode()
 
-        val font = androidx.core.content.res.ResourcesCompat.getFont(this, R.font.inter_font)
         es.dmoral.toasty.Toasty.Config.getInstance()
-            .setToastTypeface(font!!)
+            .setToastTypeface(android.graphics.Typeface.create("sans-serif-medium", android.graphics.Typeface.NORMAL))
             .setTextSize(14)
             .setGravity(android.view.Gravity.BOTTOM, 0, 300)
             .apply()

@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<font-family xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
     <font
-        android:font="@font/inter_regular"
+        android:fontFamily="sans-serif"
         android:fontWeight="400"
-        app:font="@font/inter_regular"
-        app:fontWeight="400" />
+        android:fontStyle="normal" />
     <font
-        android:font="@font/inter_medium"
+        android:fontFamily="sans-serif-medium"
         android:fontWeight="500"
-        app:font="@font/inter_medium"
-        app:fontWeight="500" />
+        android:fontStyle="normal" />
     <font
-        android:font="@font/inter_bold"
+        android:fontFamily="sans-serif-black"
         android:fontWeight="700"
-        app:font="@font/inter_bold"
-        app:fontWeight="700" />
+        android:fontStyle="normal" />
 </font-family>

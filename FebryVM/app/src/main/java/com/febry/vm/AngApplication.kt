@@ -7,6 +7,7 @@ import androidx.work.WorkManager
 import com.tencent.mmkv.MMKV
 import com.febry.vm.AppConfig.ANG_PACKAGE
 import com.febry.vm.handler.SettingsManager
+import com.google.android.material.color.DynamicColors
 
 class AngApplication : MultiDexApplication() {
     companion object {

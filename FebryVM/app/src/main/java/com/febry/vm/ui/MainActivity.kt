@@ -28,6 +28,7 @@ import com.febry.vm.enums.EConfigType
 import com.febry.vm.enums.PermissionType
 import com.febry.vm.extension.toast
 import com.febry.vm.extension.toastError
+import com.febry.vm.extension.toTrafficString
 import com.febry.vm.handler.AngConfigManager
 import com.febry.vm.handler.MmkvManager
 import com.febry.vm.handler.SettingsChangeManager

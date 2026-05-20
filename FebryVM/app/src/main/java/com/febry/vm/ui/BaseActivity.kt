@@ -51,7 +51,7 @@ abstract class BaseActivity : AppCompatActivity() {
         applyThemeColor()
         super.onCreate(savedInstanceState)
         
-        if (MmkvManager.decodeBool(AppConfig.PREF_APP_LOCK_ENABLED) && !isAuthorized) {
+        if (MmkvManager.decodeSettingsBool(AppConfig.PREF_APP_LOCK_ENABLED) && !isAuthorized) {
             showBiometricPrompt()
         }
 

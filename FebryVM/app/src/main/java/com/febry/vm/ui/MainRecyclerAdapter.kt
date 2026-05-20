@@ -72,8 +72,10 @@ class MainRecyclerAdapter(
             //layoutIndicator
             if (guid == MmkvManager.getSelectServer()) {
                 holder.itemMainBinding.layoutIndicator.setBackgroundResource(R.color.colorIndicator)
+                holder.itemMainBinding.layoutIndicator.visibility = View.VISIBLE
             } else {
                 holder.itemMainBinding.layoutIndicator.setBackgroundResource(0)
+                holder.itemMainBinding.layoutIndicator.visibility = View.GONE
             }
 
             //subscription remarks

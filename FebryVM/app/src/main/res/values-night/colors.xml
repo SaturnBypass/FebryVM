@@ -1,52 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="color_fab_active">#f97910</color>
-    <color name="color_fab_inactive">#646464</color>
-    <color name="divider_color_light">#424242</color>
+    <color name="color_fab_active">#00E5FF</color>
+    <color name="color_fab_inactive">#3A4256</color>
+    <color name="divider_color_light">#1F2536</color>
 
-    <!-- Primary colors - main tone: gray -->
-    <color name="md_theme_primary">#C0C0C0</color>
-    <color name="md_theme_onPrimary">#303030</color>
-    <color name="md_theme_primaryContainer">#474747</color>
-    <color name="md_theme_onPrimaryContainer">#E0E0E0</color>
+    <!-- Material 3 dark premium palette (mirrors default for consistent dark theme) -->
+    <color name="md_theme_primary">#00E5FF</color>
+    <color name="md_theme_onPrimary">#00323C</color>
+    <color name="md_theme_primaryContainer">#0E3A45</color>
+    <color name="md_theme_onPrimaryContainer">#9DF0FF</color>
 
-    <!-- Secondary colors - accent color: orange -->
-    <color name="md_theme_secondary">#FFB687</color>
-    <color name="md_theme_onSecondary">#4E2600</color>
-    <color name="md_theme_secondaryContainer">#6F3800</color>
-    <color name="md_theme_onSecondaryContainer">#FFE8D6</color>
+    <color name="md_theme_secondary">#B5A6FF</color>
+    <color name="md_theme_onSecondary">#27106B</color>
+    <color name="md_theme_secondaryContainer">#3D2A8C</color>
+    <color name="md_theme_onSecondaryContainer">#E2DAFF</color>
 
-    <!-- Tertiary colors - tertiary color: green -->
-    <color name="md_theme_tertiary">#83D6B5</color>
-    <color name="md_theme_onTertiary">#00382E</color>
-    <color name="md_theme_tertiaryContainer">#005143</color>
-    <color name="md_theme_onTertiaryContainer">#A0F2D0</color>
+    <color name="md_theme_tertiary">#3DDC97</color>
+    <color name="md_theme_onTertiary">#003824</color>
+    <color name="md_theme_tertiaryContainer">#0E5237</color>
+    <color name="md_theme_onTertiaryContainer">#A5F2CB</color>
 
-    <!-- Error colors -->
-    <color name="md_theme_error">#FFB4AB</color>
-    <color name="md_theme_errorContainer">#93000A</color>
-    <color name="md_theme_onError">#690005</color>
-    <color name="md_theme_onErrorContainer">#FFDAD6</color>
+    <color name="md_theme_error">#FF5C7A</color>
+    <color name="md_theme_errorContainer">#5C0A1F</color>
+    <color name="md_theme_onError">#3D0010</color>
+    <color name="md_theme_onErrorContainer">#FFD3DB</color>
 
-    <!-- Background colors -->
-    <color name="md_theme_background">#1C1B1F</color>
-    <color name="md_theme_onBackground">#E6E1E5</color>
+    <color name="md_theme_background">#0A0E1A</color>
+    <color name="md_theme_onBackground">#E7ECF5</color>
+    <color name="md_theme_surface">#0A0E1A</color>
+    <color name="md_theme_onSurface">#E7ECF5</color>
+    <color name="md_theme_surfaceVariant">#1A1F2E</color>
+    <color name="md_theme_onSurfaceVariant">#8B95A7</color>
+    <color name="md_theme_inverseSurface">#E7ECF5</color>
+    <color name="md_theme_inverseOnSurface">#0A0E1A</color>
 
-    <!-- Surface colors -->
-    <color name="md_theme_surface">#1C1B1F</color>
-    <color name="md_theme_onSurface">#E6E1E5</color>
-    <color name="md_theme_surfaceVariant">#49454F</color>
-    <color name="md_theme_onSurfaceVariant">#CAC4D0</color>
-    <color name="md_theme_inverseSurface">#E6E1E5</color>
-    <color name="md_theme_inverseOnSurface">#1C1B1F</color>
+    <color name="md_theme_outline">#3A4256</color>
+    <color name="md_theme_outlineVariant">#2A3142</color>
 
-    <!-- Outline colors -->
-    <color name="md_theme_outline">#938F99</color>
-    <color name="md_theme_outlineVariant">#49454F</color>
-
-    <!-- Other colors -->
-    <color name="md_theme_inversePrimary">#000000</color>
+    <color name="md_theme_inversePrimary">#006D7E</color>
     <color name="md_theme_shadow">#000000</color>
-    <color name="md_theme_surfaceTint">#C0C0C0</color>
+    <color name="md_theme_surfaceTint">#00E5FF</color>
     <color name="md_theme_scrim">#000000</color>
 </resources>

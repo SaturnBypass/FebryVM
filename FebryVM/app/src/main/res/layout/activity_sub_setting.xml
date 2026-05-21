@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_app_root"
     android:fitsSystemWindows="true"
     tools:context=".ui.SubSettingActivity">
 
@@ -11,7 +12,9 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingTop="8dp"
+        android:paddingBottom="96dp"
         tools:listitem="@layout/item_recycler_sub_setting" />
-
 
 </RelativeLayout>

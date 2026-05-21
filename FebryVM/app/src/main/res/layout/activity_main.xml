@@ -5,42 +5,74 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_app_root"
     android:fitsSystemWindows="true">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorSurface"
+            android:background="@android:color/transparent"
             app:elevation="0dp">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:contentScrim="@android:color/transparent"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingTop="?attr/actionBarSize">
+                    android:paddingTop="?attr/actionBarSize"
+                    android:paddingHorizontal="16dp">
+
+                    <!-- Hero status row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="4dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/dot_status_online" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/inter_font"
+                            android:letterSpacing="0.08"
+                            android:text="@string/title_server"
+                            android:textAllCaps="true"
+                            android:textColor="@color/text_muted"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
 
                     <!-- Data Usage Dashboard -->
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/card_usage_dashboard"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="16dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="4dp"
                         android:layout_marginBottom="16dp"
+                        app:cardBackgroundColor="@color/surface_elevated"
                         app:cardCornerRadius="24dp"
                         app:cardElevation="0dp"
-                        app:strokeWidth="1dp"
-                        app:strokeColor="@color/md_theme_outlineVariant">
+                        app:strokeColor="@color/hairline"
+                        app:strokeWidth="1dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -55,8 +87,13 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Data Usage"
-                                    android:textAppearance="?attr/textAppearanceTitleMedium"
+                                    android:layout_centerVertical="true"
+                                    android:fontFamily="@font/inter_font"
+                                    android:letterSpacing="0.08"
+                                    android:text="DATA USAGE"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/text_muted"
+                                    android:textSize="11sp"
                                     android:textStyle="bold" />
 
                                 <com.google.android.material.button.MaterialButton
@@ -66,25 +103,22 @@
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentEnd="true"
                                     android:layout_centerVertical="true"
+                                    android:minHeight="0dp"
+                                    android:paddingHorizontal="8dp"
+                                    android:paddingVertical="4dp"
                                     android:text="View All"
+                                    android:textColor="@color/brand_cyan"
                                     android:textSize="12sp"
                                     app:icon="@drawable/ic_arrow_drop_down"
-                                    app:iconGravity="end" />
+                                    app:iconGravity="end"
+                                    app:iconSize="16dp"
+                                    app:iconTint="@color/brand_cyan" />
                             </RelativeLayout>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="100dp"
-                                android:layout_marginTop="12dp"
-                                android:background="@drawable/nav_header_gradient"
-                                android:alpha="0.1"
-                                android:gravity="center"
-                                android:visibility="gone"/> <!-- Visual element placeholder -->
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="14dp"
                                 android:orientation="horizontal">
 
                                 <LinearLayout
@@ -92,46 +126,60 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:orientation="vertical">
+
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Upload"
-                                        android:textAppearance="?attr/textAppearanceLabelSmall"
-                                        android:textColor="?attr/colorOnSurfaceVariant" />
+                                        android:fontFamily="@font/inter_font"
+                                        android:letterSpacing="0.06"
+                                        android:text="UPLOAD"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/text_muted"
+                                        android:textSize="10sp" />
+
                                     <TextView
                                         android:id="@+id/tv_dashboard_upload"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
+                                        android:layout_marginTop="4dp"
+                                        android:fontFamily="@font/inter_font"
                                         android:text="0.00 B"
-                                        android:textAppearance="?attr/textAppearanceTitleLarge"
-                                        android:textColor="@color/md_theme_primary"
+                                        android:textColor="@color/brand_cyan"
+                                        android:textSize="22sp"
                                         android:textStyle="bold" />
                                 </LinearLayout>
 
                                 <View
                                     android:layout_width="1dp"
                                     android:layout_height="match_parent"
-                                    android:layout_marginHorizontal="16dp"
-                                    android:background="@color/md_theme_outlineVariant" />
+                                    android:layout_marginHorizontal="12dp"
+                                    android:background="@color/hairline" />
 
                                 <LinearLayout
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:orientation="vertical">
+
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Download"
-                                        android:textAppearance="?attr/textAppearanceLabelSmall"
-                                        android:textColor="?attr/colorOnSurfaceVariant" />
+                                        android:fontFamily="@font/inter_font"
+                                        android:letterSpacing="0.06"
+                                        android:text="DOWNLOAD"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/text_muted"
+                                        android:textSize="10sp" />
+
                                     <TextView
                                         android:id="@+id/tv_dashboard_download"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
+                                        android:layout_marginTop="4dp"
+                                        android:fontFamily="@font/inter_font"
                                         android:text="0.00 B"
-                                        android:textAppearance="?attr/textAppearanceTitleLarge"
                                         android:textColor="@color/md_theme_tertiary"
+                                        android:textSize="22sp"
                                         android:textStyle="bold" />
                                 </LinearLayout>
                             </LinearLayout>
@@ -143,7 +191,9 @@
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
+                    android:background="@android:color/transparent"
                     app:layout_collapseMode="pin"
+                    app:titleTextColor="@color/md_theme_onSurface"
                     app:titleTextAppearance="?attr/textAppearanceTitleLarge" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -154,16 +204,22 @@
                 android:layout_height="wrap_content"
                 android:indeterminate="true"
                 android:visibility="invisible"
-                app:indicatorColor="?attr/colorPrimary" />
+                app:indicatorColor="@color/brand_cyan"
+                app:trackColor="@color/hairline" />
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                app:tabIndicator="@null"
                 app:tabIndicatorFullWidth="false"
                 app:tabMode="scrollable"
-                app:tabSelectedTextColor="?attr/colorPrimary"
-                app:tabTextColor="?attr/colorOnSurfaceVariant" />
+                app:tabPaddingStart="16dp"
+                app:tabPaddingEnd="16dp"
+                app:tabRippleColor="@color/hairline"
+                app:tabSelectedTextColor="@color/brand_cyan"
+                app:tabTextColor="@color/text_muted" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -173,44 +229,61 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-        <!-- Connection Test Area at the bottom -->
+        <!-- Connection Test bar (bottom) -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/layout_test"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_margin="16dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp"
             android:clickable="true"
             android:focusable="true"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            app:strokeWidth="0dp">
+            app:cardBackgroundColor="@color/surface_elevated"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/hairline"
+            app:strokeWidth="1dp">
 
-            <TextView
-                android:id="@+id/tv_test_state"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="64dp"
                 android:gravity="center_vertical"
-                android:paddingHorizontal="16dp"
-                android:text="@string/connection_test_pending"
-                android:textAppearance="?attr/textAppearanceBodyMedium"
-                android:textColor="?attr/colorOnSurfaceVariant" />
+                android:orientation="horizontal"
+                android:paddingStart="20dp"
+                android:paddingEnd="80dp">
+
+                <TextView
+                    android:id="@+id/tv_test_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/inter_font"
+                    android:maxLines="1"
+                    android:text="@string/connection_test_pending"
+                    android:textColor="@color/md_theme_onSurface"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="88dp"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:clickable="true"
             android:focusable="true"
             android:src="@drawable/ic_play_24dp"
+            app:backgroundTint="@color/brand_cyan"
+            app:borderWidth="0dp"
+            app:elevation="6dp"
             app:layout_anchor="@id/layout_test"
-            app:layout_anchorGravity="top|end"
-            app:tint="?attr/colorOnPrimary"
-            app:backgroundTint="?attr/colorPrimary" />
+            app:layout_anchorGravity="end|center_vertical"
+            app:rippleColor="#33FFFFFF"
+            app:tint="#00323C" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
@@ -219,10 +292,11 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@color/surface_top"
         app:headerLayout="@layout/nav_header"
+        app:itemIconTint="@color/md_theme_onSurfaceVariant"
+        app:itemTextColor="@color/md_theme_onSurface"
         app:menu="@menu/menu_drawer"
-        app:itemIconTint="?attr/colorOnSurfaceVariant"
-        app:itemTextColor="?attr/colorOnSurface"
-        app:subheaderColor="?attr/colorOnSurfaceVariant" />
+        app:subheaderColor="@color/text_muted" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
